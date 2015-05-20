@@ -21,15 +21,24 @@ $wgExtensionCredits['skin'][] = array(
 	'descriptionmsg' => 'funtoo-desc',
 	'license' => 'GPL-2.0+',
 );
-$wgValidSkinNames['funtoo'] = 'funtoo';
- 
-$wgAutoloadClasses['Skinfuntoo'] = __DIR__ . '/funtoo.skin.php';
-$wgMessagesDirs['funtoo'] = __DIR__ . '/i18n';
-$wgResourceModules['funtoo'] = array(
+$wgValidSkinNames['funtoo'] = 'funtoo'; 
+$wgAutoloadClasses['Skinfuntoo'] = __DIR__.'/funtoo.skin.php';
+$wgMessagesDirs['funtoo'] = __DIR__.'/i18n';
+$wgResourceModules['skins.funtoo'] = array(
 	'styles' => array(
-		'resources/funtoo.css' => array( 'media' => 'screen' ),
-		'resources/print.css' => array( 'media' => 'print' ),
+		'funtoo/resources/bootstrap/dist/css/bootstrap.min.css',
+		'funtoo/resources/font-awesome/css/font-awesome.min.css',
+		'funtoo/resources/funtoo.css' => array( 'media' => 'screen' ),
+		'funtoo/resources/print.css' => array( 'media' => 'print' ),
 	),
-	'remoteSkinPath' => 'funtoo',
-	'localBasePath' => __DIR__,
+    'remoteBasePath' => &$GLOBALS['wgStylePath'],
+    'localBasePath'  => &$GLOBALS['wgStyleDirectory']
+);
+$wgResourceModules['skins.funtoo.js'] = array(
+	'scripts' => array(
+		'funtoo/resources/funtoo.js',
+		'funtoo/resources/bootstrap/dist/js/bootstrap.min.js',
+	),
+	'remoteBasePath' => &$GLOBALS['wgStylePath'],
+	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );

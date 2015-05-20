@@ -21,12 +21,10 @@ class Skinfuntoo extends SkinTemplate {
 	 *
 	 * @param OutputPage $out
 	 */
-	/*
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
-		$out->addModules( 'skins.foobar.js' );
+		$out->addModules( 'skins.funtoo.js' );
 	}
-	*/
  
 	/**
 	 * Add CSS via ResourceLoader
@@ -41,7 +39,7 @@ class Skinfuntoo extends SkinTemplate {
 	}
 }
 /**
- * BaseTemplate class for funtoo skin
+ * BaseTemplate class for Foo Bar skin
  *
  * @ingroup Skins
  */
@@ -51,146 +49,106 @@ class funtooTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		$this->html( 'headelement' ); ?>
- 
-		// Suppress warnings to prevent notices about missing indexes in $this->data
-		wfSuppressWarnings();
+/**
+your fun stuff
+**/
+<div>div test</div>
+<h1>h1 test</h1>
 
-		$this->html( 'headelement' );
-		?>
+<div class="row">
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+</div>
+<div class="row">
+  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-6">.col-md-6</div>
+  <div class="col-md-6">.col-md-6</div>
+</div>
 
-		<!-- heading -->
-		<div id="mw_header"><h1 id="firstHeading" lang="<?php
-			$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
-			$this->text( 'pageLanguage' );
-			?>"><span dir="auto"><?php $this->html( 'title' ) ?></span></h1></div>
-
-		<div id="mw_main">
-			<div id="mw_contentwrapper">
-				<!-- navigation portlet -->
-				<?php $this->cactions(); ?>
-
-				<!-- content -->
-				<div id="mw_content" role="main">
-					<!-- contentholder does nothing by default, but it allows users to style the text inside
-						 the content area without affecting the meaning of 'em' in #mw_content, which is used
-						 for the margins -->
-					<div id="mw_contentholder" class="mw-body">
-						<div class='mw-topboxes'>
-							<div id="mw-js-message"
-								style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
-							<div class="mw-topbox" id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
-							<?php
-							if ( $this->data['newtalk'] ) {
-								?>
-								<div class="usermessage mw-topbox"><?php $this->html( 'newtalk' ) ?></div>
-							<?php
-							}
-							?>
-							<?php
-							if ( $this->data['sitenotice'] ) {
-								?>
-								<div class="mw-topbox" id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
-							<?php
-							}
-							?>
-						</div>
-
-						<div id="contentSub"<?php
-						$this->html( 'userlangattributes' )
-						?>><?php
-							$this->html( 'subtitle' )
-							?></div>
-
-						<?php
-						if ( $this->data['undelete'] ) {
-							?>
-							<div id="contentSub2"><?php $this->html( 'undelete' ) ?></div><?php
-						}
-						?>
-						<div id="jump-to-nav"><?php $this->msg( 'jumpto' ) ?>
-							<a href="#mw_portlets"><?php
-								$this->msg( 'jumptonavigation' ) ?></a><?php $this->msg( 'comma-separator' )
-							?>
-							<a href="#searchInput"><?php $this->msg( 'jumptosearch' ) ?></a>
-						</div>
-
-						<?php $this->html( 'bodytext' ) ?>
-						<div class='mw_clear'></div>
-						<?php
-						if ( $this->data['catlinks'] ) {
-							$this->html( 'catlinks' );
-						}
-						?>
-						<?php $this->html( 'dataAfterContent' ) ?>
-					</div><!-- mw_contentholder -->
-				</div><!-- mw_content -->
-			</div><!-- mw_contentwrapper -->
-
-			<div id="mw_portlets"<?php $this->html( "userlangattributes" ) ?>>
-				<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
-
-				<!-- portlets -->
-				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
-
-			</div><!-- mw_portlets -->
+<i class="fa fa-reddit"></i> 
 
 
-		</div><!-- main -->
+<?php $this->text( 'sitename' ); ?>
+<?php $this->html( 'title' ); ?>
 
-		<div class="mw_clear"></div>
+<ul>
+<?php
+	foreach ( $this->data['content_navigation']['namespaces'] as $key => $tab ) {
+		echo $this->makeListItem( $key, $tab );
+	}
+?>
+</ul>
 
-		<!-- personal portlet -->
-		<div class="portlet" id="p-personal" role="navigation">
-			<h3><?php $this->msg( 'personaltools' ) ?></h3>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
 
-			<div class="pBody">
-				<ul>
-					<?php
-					foreach ( $this->getPersonalTools() as $key => $item ) {
-						?>
-						<?php echo $this->makeListItem( $key, $item ); ?>
+<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+  Loading state
+</button>
 
-					<?php
-					}
-					?>
-				</ul>
-			</div>
-		</div>
+<script>
+  $('#myButton').on('click', function () {
+    var $btn = $(this).button('loading')
+    // business logic...
+    $btn.button('reset')
+  })
+</script>
 
 
-		<!-- footer -->
-		<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
-			<ul id="f-list">
-				<?php
-				foreach ( $this->getFooterLinks( "flat" ) as $aLink ) {
-					if ( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-						?>
-						<li id="<?php echo $aLink ?>"><?php $this->html( $aLink ) ?></li>
-					<?php
-					}
-				}
-				?>
-			</ul>
-			<?php
-			foreach ( $this->getFooterIcons( "nocopyright" ) as $blockName => $footerIcons ) {
-				?>
-				<div id="mw_<?php echo htmlspecialchars( $blockName ); ?>">
-					<?php
-					foreach ( $footerIcons as $icon ) {
-						?>
-						<?php echo $this->getSkin()->makeFooterIcon( $icon, 'withoutImage' ); ?>
+<div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown trigger
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    ...
+  </ul>
+</div>
 
-					<?php
-					} ?>
-				</div>
-			<?php
-			}
-			?>
-		</div>
- 
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="checkbox" autocomplete="off" checked> Checkbox 1 (pre-checked)
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox" autocomplete="off"> Checkbox 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="checkbox" autocomplete="off"> Checkbox 3
+  </label>
+</div>
+
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button>
+
+
+/** end of your fun stuff **/
+
 <?php $this->printTrail(); ?>
 </body>
 </html><?php
-		wfRestoreWarnings();
 	}
 }
