@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [ "666threesixes666" ]
+	},
+	"skinname-funtoo": "funtoo",
+	"funtoo-skin-desc": "vanilla font awesome and boot strap",
+	"funtoo.css": "/* CSS placed here will affect users of the funtoo skin */",
+	"funtoo.js": "/* Any JavaScript here will be loaded for users using the funtoo skin */",
+	"funtoo-action-addsection": "Add topic",
+	"funtoo-action-delete": "Delete",
+	"funtoo-action-move": "Move",
+	"funtoo-action-protect": "Protect",
+	"funtoo-action-undelete": "Undelete",
+	"funtoo-action-unprotect": "Change protection",
+	"funtoo-view-create": "Create",
+	"funtoo-view-edit": "Edit",
+	"funtoo-view-history": "View history",
+	"funtoo-view-view": "Read",
+	"funtoo-view-viewsource": "View source",
+	"funtoo-more-actions": "More"
+}
