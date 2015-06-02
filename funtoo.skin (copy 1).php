@@ -51,39 +51,6 @@ class funtooTemplate extends BaseTemplate {
 		$this->html( 'headelement' ); ?>
 <!--your fun stuff-->
 
-<!-- start of nav -->
-<!--language links-->
-<?php
-	// Language links are often not present, so this if-statement allows you to add a conditional <ul> around the language list
-	if ( $this->data['language_urls'] ) {
-		echo "<ul>";
-		foreach ( $this->data['language_urls'] as $key => $langLink ) {
-			echo $this->makeListItem( $key, $langLink );
-		}
-		echo "</ul>";
-	} 
-?>
-
-<!--personal tools-->
-
-<ul>
-<?php
-	foreach ( $this->getPersonalTools() as $key => $item ) {
-		echo $this->makeListItem( $key, $item );
-	}
-?>
-</ul>
-
-<!--search-->
-
-<form action="<?php $this->text( 'wgScript' ); ?>">
-	<input type="hidden" name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
-<?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
-<?php echo $this->makeSearchButton( 'go' ); ?>
-</form>
-
-<!--end of nav-->
-
 <!--user message new talk-->
 <?php $this->html( 'newtalk' ); ?>
 
@@ -93,11 +60,52 @@ class funtooTemplate extends BaseTemplate {
 </div>
 <?php } ?>
 
-<!--page title-->
+<!--site notice-->
+<?php $this->html( 'sitenotice' ); ?>
+
+<?php if ( $this->data['sitenotice'] ) { ?>
+<div id="siteNotice"> <!-- The CSS class used in Monobook and Vector, if you want to follow a similar design -->
+<?php $this->html( 'sitenotice' ); ?>
+</div>
+<?php } ?>
+
+<!--site name-->
+<?php $this->text( 'sitename' ); ?>
+
+<!--logo and main page link-->
+
+<a
+	href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>"
+	<?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>
+>
+	<img
+		src="<?php $this->text( 'logopath' ) ?>"
+		alt="<?php $this->text( 'sitename' ) ?>"
+	/>
+</a>
+
+<!--title-->
+
+<?php $this->html( 'title' ); ?>
+
+<h1 id="firstHeading" class="firstHeading"><?php $this->html( 'title' ) ?></h1>
 
 <?php if ( !empty( $this->data['title'] ) ) { ?>
 <h1 id="firstHeading" class="firstHeading"><?php $this->html( 'title' ) ?></h1>
 <?php } ?>
+
+<!--body content-->
+<h1>derp fuck you</h1>
+<?php $this->html( 'bodytext' ) ?>
+<div id="bodyContent" class="mw-body-content">
+<div id="content">
+<div id="bodyContent">
+<div class="mw-body">
+<h1> end of derp fuck you</h1>
+<!--tagline-->
+<?php $this->msg( 'tagline' ); ?>
+<div id="siteSub"><?php $this->msg( 'tagline' ); ?></div>
+<?php if ( $this->data['isarticle'] ) { ?>...<?php } ?>
 
 <!--subtitles-->
 <?php $this->html( 'subtitle' ); ?>
@@ -118,6 +126,20 @@ class funtooTemplate extends BaseTemplate {
 
 <!--categories-->
 <?php $this->html( 'catlinks' ); ?>
+
+<!-- data after content-->
+
+<?php $this->html( 'dataAfterContent' ); ?>
+
+<!--personal tools-->
+
+<ul>
+<?php
+	foreach ( $this->getPersonalTools() as $key => $item ) {
+		echo $this->makeListItem( $key, $item );
+	}
+?>
+</ul>
 
 <!--content actions-->
 
@@ -177,6 +199,36 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 	}
 } ?>
 
+<!--language links-->
+<?php
+	// Language links are often not present, so this if-statement allows you to add a conditional <ul> around the language list
+	if ( $this->data['language_urls'] ) {
+		echo "<ul>";
+		foreach ( $this->data['language_urls'] as $key => $langLink ) {
+			echo $this->makeListItem( $key, $langLink );
+		}
+		echo "</ul>";
+	} 
+?>
+
+<!--toolbox-->
+<ul>
+<?php
+	foreach ( $this->getToolbox() as $key => $tbitem ) {
+		echo $this->makeListItem( $key, $tbitem );
+	}
+	wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
+?>
+</ul>
+
+<!--search-->
+
+<form action="<?php $this->text( 'wgScript' ); ?>">
+	<input type="hidden" name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
+<?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
+<?php echo $this->makeSearchButton( 'go' ); ?>
+</form>
+
 <!--footer links flat array-->
 
 <ul>
@@ -186,6 +238,19 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 <?php } ?>
 </ul>
 
+<!--footer links--
+<?php
+foreach ( $this->getFooterLinks() as $category => $links ) { ?>
+<ul>
+<?php
+	foreach ( $links as $key ) { ?>
+	<li><?php $this->html( $key ) ?></li>
+ 
+<?php
+	} ?>
+</ul>
+<?php
+} ?>-->
 
 <!--footer icons-->
 <ul>

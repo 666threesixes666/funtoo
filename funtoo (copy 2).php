@@ -27,7 +27,6 @@ $wgMessagesDirs['funtoo'] = __DIR__.'/i18n';
 $wgResourceModules['skins.funtoo'] = array(
 	'styles' => array(
 		'funtoo/resources/bootstrap/dist/css/bootstrap.min.css',
-		'funtoo/resources/normalize/normalize.css',
 		'funtoo/resources/font-awesome/css/font-awesome.min.css',
 		'funtoo/resources/funtoo.css' => array( 'media' => 'screen' ),
 		'funtoo/resources/print.css' => array( 'media' => 'print' ),

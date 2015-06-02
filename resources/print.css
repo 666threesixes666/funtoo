@@ -14,3 +14,13 @@
             margin: 0px;  /* the margin on the content before printing */
        }
 
+#mw_portlets,
+#p-cactions,
+#p-personal,
+#jump-to-nav,
+#footer,
+.mw-editsection,
+.mw-editsection-like,
+.noprint {
+	display: none;
+}

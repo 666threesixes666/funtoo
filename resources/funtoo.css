@@ -1,3 +1,27 @@
 /** some garbage values to test functionality**/
-body{color: #222 !important;}
-a{color: #050 !important;}
+body{color: #222;
+    margin: 1% 4%;}
+a{color: #050}
+
+/**remove bullets from list items**/
+ul {list-style-type: none;
+margin: 0;
+padding: 0;}
+
+/** horitizontal list items **/
+li {display: inline;}
+
+/** watermark **/
+body{
+  	background-image:
+          linear-gradient(
+      rgba(255, 255, 255, 0.90), 
+      rgba(255, 255, 255, 0.90)
+    ),
+      url('http://i.imgur.com/cYU7hXs.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: repeat-y;
+}
+

@@ -1,0 +1,11 @@
+h1
+body
+category
+lang
+create
+login/logout
+
+pagelink talklink read edit viewhistory watch delete move protect search sidebar footer last modified license links icons
+
+
+the skin needs to have its php add in elements in this order, positions are completely dictated by css. i screwed it up...  content needs to be ordered to the very top of the body tags.
