@@ -1,0 +1,34 @@
+title
+body text
+categories
+language
+create
+personal tools
+page link
+talk link
+read 
+edit 
+viewhistory
+watch
+delete
+move
+protect
+content actions
+search form
+sidebar
+footer links
+footer icons
+
+
+the skin needs to have its php "adding skin elements" in this order for at least the first few items, nav/login/page manipulation positions are completely dictated by css.  content needs to be ordered to the very top of the body tags.
+
+how should i do nav?  name/logo, sidebar, page controls, user controls, search float right?  something like that?
+
+to do:
+fix footer links
+
+clean up navbar extra html items from testing
+
+fix search, its a complete mess, both nav & search page search forms are in need of fixing.
+
+when done with funtoo's bootstrapping, http://foundation.zurb.com/index.html duplicate effort of this?  then http://960.gs/ then http://unsemantic.com/ ?????

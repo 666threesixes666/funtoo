@@ -2,7 +2,7 @@ this is intended to take vanilla font awesome and vanilla bootstrap so we can do
 bootstrap-3.3.4
 normalize-3.0.2
 font-awesome-4.3.0
-renamed to bootstrap and font-awesome
+directories are renamed to normalize, bootstrap, and font-awesome.
 
 styles and js can be added to the files funtoo.css funtoo.js & print.css for printer specific css.
 
@@ -12,12 +12,9 @@ https://www.mediawiki.org/wiki/Manual:Skinning
 
 it needs the mediawiki pages "2.2 Adding skin elements" section redone  for more information on how it needs redone see skinstructure.readme.txt
 
-
 bootstrap comes with a theme.  to use it: edit /funtoo/funtoo.php 
 
 change this line from this:
 		'funtoo/resources/bootstrap/dist/css/bootstrap.min.css',
 to this:
 		'funtoo/resources/bootstrap/dist/css/bootstrap-theme.min.css',
-
-

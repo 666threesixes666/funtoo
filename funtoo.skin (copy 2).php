@@ -57,17 +57,6 @@ class funtooTemplate extends BaseTemplate {
 <?php } ?>
 <!--end of page title-->
 
-<!--brought to you by funtoo.org-->
-<h1 class="coffeetin center">brought to you by funtoo.org</h1>
-
-<!--user message new talk-->
-<?php if ( $this->data['newtalk'] ) { ?>
-<h3 class="newtalk">
-<?php $this->html( 'newtalk' );?>
-</h3>
-<?php } ?>
-<!--end of user message new talk-->
-
 <!--body text-->
 <?php $this->html( 'bodytext' ) ?>
 <!--end of body text-->
@@ -93,6 +82,16 @@ class funtooTemplate extends BaseTemplate {
 ?>
 <!--end of language links-->
 
+<!--user message new talk-->
+<?php $this->html( 'newtalk' ); ?>
+
+<?php if ( $this->data['newtalk'] ) { ?>
+<div class="usermessage"> <!-- The CSS class used in Monobook and Vector, if you want to follow a similar design -->
+<?php $this->html( 'newtalk' );?>
+</div>
+<?php } ?>
+<!--end of user message new talk-->
+
 <!--subtitles-->
 <?php $this->html( 'subtitle' ); ?>
 <?php $this->html( 'undelete' ); ?>
@@ -108,61 +107,33 @@ class funtooTemplate extends BaseTemplate {
 <?php } ?>
 <!--end of subtitles-->
 
-<!--start of nav-->
-<!--start of logo/minify menu button-->
-<div class="nav">
+<!--personal tools-->
+
+<nav class="nav">
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
-<!--properly terminated tags to end of logo/min-->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-<span class="sr-only">Toggle navigation</span>
-<i class="fa fa-smile-o fa-2"></i>
-      </button>
-<a class="navbar-brand"	href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] );	?>"	<?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>>
+<ul class="nav nav-pills">
+<a class="navbar-brand"	href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] );	?>"
+	<?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>
+>
 <img src="<?php echo $this->getSkin()->getSkinStylePath( 'resources/images/funtoo.png'); 
-?>" alt="logo" class="logo"></img></a>
-</div>
-<!--end of logo/minify menu button-->
-
- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-<ul class="nav">
-<!--start of sidebar-->
-<li class="horiz">
-<ul class="nav nav-pills navbar-nav">
+?>" alt="logo" class="logo"></img>
+</a>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-wrench"></i><span class="caret"></span>
+      user <span class="caret"></span>
     </a>
-<ul class="dropdown-menu" role="nav menu">
+<ul class="dropdown-menu" role="menu">
 <?php
-foreach ( $this->getSidebar() as $boxName => $box ) { ?>
-
-<?php
-	if ( is_array( $box['content'] ) ) { ?>
-<?php
-		foreach ( $box['content'] as $key => $item ) {
-			echo $this->makeListItem( $key, $item );
-		}
-?>
-<?php
-	} else {
-		echo $box['content'];
+	foreach ( $this->getPersonalTools() as $key => $item ) {
+		echo $this->makeListItem( $key, $item );
 	}
-} ?>
+?>
 </ul>
 </li>
-</ul>
-</li>
-<!--end of sidebar-->
-
-<!--start ofcontent actions-->
-<li class="horiz">
-<ul class="nav nav-pills navbar-nav">
+<!--content actions-->
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-newspaper-o"></i><span class="caret"></span>
+      page <span class="caret"></span>
     </a>
 <ul class="dropdown-menu" role="menu">
 <?php
@@ -173,51 +144,34 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 </ul>
 </li>
 </ul>
-</li>
-<!--end of content actions-->
+</nav>
+</nav>
+<!--search-->
 
-<!--start of user tools-->
-<li class="horiz">
-<ul class="nav nav-pills navbar-nav">
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-user"></i><span class="caret"></span>
-    </a>
-<ul class="dropdown-menu" role="nav menu">
-<?php
-	foreach ( $this->getPersonalTools() as $key => $item ) {
-		echo $this->makeListItem( $key, $item );
-	}
-?>
-</ul>
-</li>
-</ul>
-</li>
-<!--end of user tools-->
-
-<form class="navbar-form navbar-right" role="search" action="<?php $this->text( 'wgScript' ); ?>">
-  <div class="form-group">
-    <input type="hidden" name="title" class="form-control" placeholder="Search" value="<?php $this->text( 'searchtitle' ) ?>" />
-<?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
-  </div>
-  <button type="submit" class="btn btn-default"><i class="fa fa-binoculars"></i></button>
-</form>
-
-<!--start of search, its almost good, however ready for a redo....--
-<form class="navbar-form navbar-right" role="search" action="<?php $this->text( 'wgScript' ); ?>">
+<form action="<?php $this->text( 'wgScript' ); ?>">
 	<input type="hidden" name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
 <?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
-<button type="submit" class="btn btn-default">
-                <i class="fa fa-binoculars"></i>
-            </button>
+<?php echo $this->makeSearchButton( 'go' ); ?>
 </form>
-<!--end of search-->
 
-</div>
-</div>
-</nav>
-</div>
-
+<!--sidebar-->
+<?php
+foreach ( $this->getSidebar() as $boxName => $box ) { ?>
+<div id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
+<?php
+	if ( is_array( $box['content'] ) ) { ?>
+	<ul>
+<?php
+		foreach ( $box['content'] as $key => $item ) {
+			echo $this->makeListItem( $key, $item );
+		}
+?>
+	</ul>
+<?php
+	} else {
+		echo $box['content'];
+	}
+} ?>
 
 <!--footer icons-->
 <?php
@@ -233,9 +187,10 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 	} ?>
 
 <!--footer links flat array-->
+
 <div class="center">
 <?php foreach ( $this->getFooterLinks( 'flat' ) as $key ) { ?>
-	<div class="btn button"><?php $this->html( $key ) ?></div>
+	<div class="btn button"><?php $this->html( $key ) ?></div><br />
  
 <?php } ?>
 </div>

@@ -26,8 +26,8 @@ $wgAutoloadClasses['Skinfuntoo'] = __DIR__.'/funtoo.skin.php';
 $wgMessagesDirs['funtoo'] = __DIR__.'/i18n';
 $wgResourceModules['skins.funtoo'] = array(
 	'styles' => array(
-		'funtoo/resources/bootstrap/dist/css/bootstrap.min.css',
 		'funtoo/resources/normalize/normalize.css',
+		'funtoo/resources/bootstrap/dist/css/bootstrap.min.css',
 		'funtoo/resources/font-awesome/css/font-awesome.min.css',
 		'funtoo/resources/funtoo.css' => array( 'media' => 'screen' ),
 		'funtoo/resources/print.css' => array( 'media' => 'print' ),
@@ -37,8 +37,8 @@ $wgResourceModules['skins.funtoo'] = array(
 );
 $wgResourceModules['skins.funtoo.js'] = array(
 	'scripts' => array(
-		'funtoo/resources/funtoo.js',
 		'funtoo/resources/bootstrap/dist/js/bootstrap.min.js',
+		'funtoo/resources/funtoo.js',
 	),
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],

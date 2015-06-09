@@ -1,15 +1,8 @@
-/** some garbage values to test functionality**/
-body{color: #222;
-    margin: 1% 4%;}
-a{color: #050}
+/**arbitrary fonts**/
+@font-face{font-family:coffeetin;src:url(fonts/coffeetin.ttf);}
+.coffeetin{font-family:coffeetin,Arial,Helvetica,sans-serif;}
 
-/**remove bullets from list items**/
-ul {list-style-type: none;
-margin: 0;
-padding: 0;}
-
-/** horitizontal list items **/
-li {display: inline;}
+/** collors & transparencies **/
 
 /** watermark **/
 body{
@@ -18,10 +11,81 @@ body{
       rgba(255, 255, 255, 0.90), 
       rgba(255, 255, 255, 0.90)
     ),
-      url('http://i.imgur.com/cYU7hXs.jpg');
+      url('images/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
     background-repeat: repeat-y;
 }
 
+/** text color **/
+
+body{color: #000;}
+
+/** link text color **/
+a{color: #008;}
+
+/** forced transparent to override mediawiki defaults **/
+
+div.editOptions, #toc, .toc, .mw-warning, table.wikitable, .catlinks, form div, form fieldset, div form{
+background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/** content page consumption **/
+body{margin: 4em 4%;}
+
+/** remove border lines under headings **/
+h1, h2, h3, h4, h5, h6, legend{
+border-bottom: 0px solid #aaa;
+}
+
+/**remove bullets from list items
+ul {list-style-type: none;
+margin: .1em;
+padding: .1em;} **/
+
+/** horitizontal list items 
+li {display: inline;
+padding: .2em;}**/
+
+/** nav to top **/
+
+div.nav  {position: absolute;
+  top: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  margin: 0;
+  z-index: 1;}
+
+.navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* Internet Explorer 7 compatibility */
+    *zoom:1;
+    vertical-align: top;
+	padding: .2em;
+}
+
+.logo {
+    position: relative;
+    top: -15px;
+}
+
+.newtalk {
+background-color: rgba(255, 206, 123, 0.4);
+}
+
+.float-right {
+float: right;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.fa-2 {
+    font-size: 2em;
+}
