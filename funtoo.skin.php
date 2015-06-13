@@ -51,6 +51,7 @@ class funtooTemplate extends BaseTemplate {
 		$this->html( 'headelement' ); ?>
 <!--your fun stuff-->
 
+<article>
 <!--page title-->
 <?php if ( !empty( $this->data['title'] ) ) { ?>
 <h1 id="firstHeading" class="firstHeading"><?php $this->html( 'title' ) ?></h1>
@@ -75,6 +76,7 @@ class funtooTemplate extends BaseTemplate {
 <!--categories-->
 <?php $this->html( 'catlinks' ); ?>
 <!--end of categories-->
+</article>
 
 <!--data after content-->
 <?php $this->html( 'dataAfterContent' ); ?>
@@ -110,18 +112,24 @@ class funtooTemplate extends BaseTemplate {
 
 <!--start of nav-->
 <!--start of logo/minify menu button-->
-<div class="nav">
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<div class="nav fixed container-fluid nopad">
+<nav class="navbar navbar-default shadow">
 <!--properly terminated tags to end of logo/min-->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 <span class="sr-only">Toggle navigation</span>
-<i class="fa fa-smile-o fa-2"></i>
+<i class="fa fa-smile-o fa-2x"></i>
       </button>
 <a class="navbar-brand"	href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] );	?>"	<?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>>
-<img src="<?php echo $this->getSkin()->getSkinStylePath( 'resources/images/funtoo.png'); 
-?>" alt="logo" class="logo"></img></a>
+	<img class="logo" width="65" height="65" src="<?php 
+		 		 $this->text( 'logopath' ); 	
+		 		 // This outputs the path your logo's image
+		 		 // You can also use  $this->data['logopath'] to output the raw URL of the image. Remember to HTML-escape if you're using this method, because the text() method does it automatically.
+			?>"
+		alt="<?php $this->text( 'sitename' ) ?>"
+	/></a>
+<!--<img src="<?php echo $this->getSkin()->getSkinStylePath( 'resources/images/funtoo.png'); 
+?>" alt="logo" class="logo"></img></a>-->
 </div>
 <!--end of logo/minify menu button-->
 
@@ -133,7 +141,7 @@ class funtooTemplate extends BaseTemplate {
 <ul class="nav nav-pills navbar-nav">
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-wrench"></i><span class="caret"></span>
+     <i class="fa fa-wrench"></i> Site Tools<span class="caret"></span>
     </a>
 <ul class="dropdown-menu" role="nav menu">
 <?php
@@ -162,7 +170,7 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 <ul class="nav nav-pills navbar-nav">
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-newspaper-o"></i><span class="caret"></span>
+     <i class="fa fa-newspaper-o"></i> Page Tools<span class="caret"></span>
     </a>
 <ul class="dropdown-menu" role="menu">
 <?php
@@ -181,7 +189,7 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 <ul class="nav nav-pills navbar-nav">
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-user"></i><span class="caret"></span>
+     <i class="fa fa-user"></i> User Tools<span class="caret"></span>
     </a>
 <ul class="dropdown-menu" role="nav menu">
 <?php
@@ -195,30 +203,24 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 </li>
 <!--end of user tools-->
 
+<!--start of search-->
 <form class="navbar-form navbar-right" role="search" action="<?php $this->text( 'wgScript' ); ?>">
-  <div class="form-group">
-    <input type="hidden" name="title" class="form-control" placeholder="Search" value="<?php $this->text( 'searchtitle' ) ?>" />
-<?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
-  </div>
-  <button type="submit" class="btn btn-default"><i class="fa fa-binoculars"></i></button>
-</form>
+  <div class="input-group">
+    <input type="hidden" name="title" class="" placeholder="Search" value="<?php $this->text( 'searchtitle' ) ?>"></input>
+<?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text', 'class' => 'form-control' ) ); ?>
 
-<!--start of search, its almost good, however ready for a redo....--
-<form class="navbar-form navbar-right" role="search" action="<?php $this->text( 'wgScript' ); ?>">
-	<input type="hidden" name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
-<?php echo $this->makeSearchInput( array( 'id' => 'searchInput' ) ); ?>
-<button type="submit" class="btn btn-default">
-                <i class="fa fa-binoculars"></i>
-            </button>
+	<span class="input-group-btn">
+  <button type="submit" class="btn btn-default"><i class="fa fa-binoculars"></i></button>
+	</span>
+  </div>
 </form>
 <!--end of search-->
 
 </div>
-</div>
 </nav>
 </div>
 
-
+<footer>
 <!--footer icons-->
 <?php
 	foreach ( $this->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) { ?>
@@ -235,12 +237,27 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 <!--footer links flat array-->
 <div class="center">
 <?php foreach ( $this->getFooterLinks( 'flat' ) as $key ) { ?>
-	<div class="btn button"><?php $this->html( $key ) ?></div>
+<?php $this->html( $key ) ?>
  
 <?php } ?>
 </div>
 
+</footer>
 <!--end of your fun stuff-->
+
+<div class="footbar center shadow fixed">
+<ul>
+<li class="horiz">
+<a href="//www.funtoo.org/">wiki</a>
+</li>
+<li class="horiz">
+<a href="//bugs.funtoo.org/">bugs</a>
+</li>
+<li class="horiz">
+<a href="//forums.funtoo.org/">forums</a>
+</li>
+</ul>
+</div>
 
 <?php $this->printTrail(); ?>
 </body>

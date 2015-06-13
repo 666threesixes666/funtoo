@@ -22,13 +22,9 @@ footer icons
 
 the skin needs to have its php "adding skin elements" in this order for at least the first few items, nav/login/page manipulation positions are completely dictated by css.  content needs to be ordered to the very top of the body tags.
 
-how should i do nav?  name/logo, sidebar, page controls, user controls, search float right?  something like that?
-
 to do:
-fix footer links
+fix search, its a complete mess, both nav & search page search forms are in need of fixing.  suggestions are totally out of control, and using terrible inline styles, that's a bug in mw's core.
 
-clean up navbar extra html items from testing
-
-fix search, its a complete mess, both nav & search page search forms are in need of fixing.
+cdn bootstrap instead of local is a possibility, ill look further into that later.
 
 when done with funtoo's bootstrapping, http://foundation.zurb.com/index.html duplicate effort of this?  then http://960.gs/ then http://unsemantic.com/ ?????

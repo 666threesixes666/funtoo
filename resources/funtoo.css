@@ -1,3 +1,11 @@
+/**beatup the toc**/
+.tocnumber:after { content: '.'}
+
+.toc, #toc
+{
+float:right;position:relative;
+}
+
 /**arbitrary fonts**/
 @font-face{font-family:coffeetin;src:url(fonts/coffeetin.ttf);}
 .coffeetin{font-family:coffeetin,Arial,Helvetica,sans-serif;}
@@ -32,7 +40,17 @@ background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 /** content page consumption **/
-body{margin: 4em 4%;}
+article
+{
+padding: 2em 2em 2em 2em;
+margin: 2em 2em 2em 2em;
+}
+
+/** raise the bottom of the page for footbar **/
+footer
+{
+margin: 0em 0em 2em 0em;
+}
 
 /** remove border lines under headings **/
 h1, h2, h3, h4, h5, h6, legend{
@@ -50,42 +68,106 @@ padding: .2em;}**/
 
 /** nav to top **/
 
-div.nav  {position: absolute;
-  top: 0;
-  left: 0;
-  height: 90px;
-  width: 100%;
-  margin: 0;
-  z-index: 1;}
+div.nav 
+{
+	top: 0px;
+	left:0px;
+	height: 1em;
+	width: 100%;
+}
 
-.navbar .nav > li {
-    float:none;
+/** nav logo stuff **/
+.navbar-brand
+{
+padding: 0em 1em 0em 1em;
+}
+
+.navbar, .dropdown-menu
+{
+  	background: linear-gradient( rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
+}
+
+.suggestions
+{
+opacity: .8;
+}
+
+/** collapsed navbar items horizontal and up top **/
+
+.navbar .nav > li
+{
     display:inline-block;
-    *display:inline; /* Internet Explorer 7 compatibility */
-    *zoom:1;
     vertical-align: top;
+	padding: .2em .2em .2em .2em;
+}
+
+/** reduce opacity for collapsed navbar menus **/
+
+.navbar-collapse
+{
+  	background: linear-gradient( rgba(255, 255, 255, .5), rgba(255, 255, 255, 0.5));
+}
+
+/**
+.suggestions
+{
+position: sticky !important;
+}**/
+
+.footbar {
+  	background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
+	bottom: 0px;
+	left:0px;
+	height: 2em;
+	width: 100%;
+}
+
+/** footbar no bullets **/
+.footbar ul {
+	list-style-type: none;
+	margin: .1em;
+	padding: .1em;}
+
+/** footbar horitizontal list items **/
+.horiz
+{
+	display: inline;
 	padding: .2em;
 }
 
-.logo {
-    position: relative;
-    top: -15px;
-}
+/**{
+opacity:0.95;}**/
 
-.newtalk {
+/** new messages opacity **/
+
+.newtalk
+{
 background-color: rgba(255, 206, 123, 0.4);
 }
 
-.float-right {
+.float-right
+{
 float: right;
 }
 
-.center{
+.center
+{
     margin-left: auto;
     margin-right: auto;
     width: 100%;
 }
 
-.fa-2 {
-    font-size: 2em;
+.shadow
+{
+	box-shadow: 0px 1px 50px #5E5E5E;
+}
+
+.fixed
+{
+	position: fixed!important;
+}
+
+.nopad
+{
+padding: 0em 0em 0em 0em;
 }

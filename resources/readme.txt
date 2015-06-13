@@ -10,7 +10,7 @@ styles and js can be added to the files funtoo.css funtoo.js & print.css for pri
 under the hood, this skin is 99% of this:
 https://www.mediawiki.org/wiki/Manual:Skinning
 
-it needs the mediawiki pages "2.2 Adding skin elements" section redone  for more information on how it needs redone see skinstructure.readme.txt
+upstreams page's "2.2 Adding skin elements" section needs redone  for more information on how it needs redone see skinstructure.readme.txt
 
 bootstrap comes with a theme.  to use it: edit /funtoo/funtoo.php 
 
