@@ -23,7 +23,7 @@ footer icons
 the skin needs to have its php "adding skin elements" in this order for at least the first few items, nav/login/page manipulation positions are completely dictated by css.  content needs to be ordered to the very top of the body tags.
 
 to do:
-fix search, its a complete mess, both nav & search page search forms are in need of fixing.  suggestions are totally out of control, and using terrible inline styles, that's a bug in mw's core.
+fix search, its a complete mess.  suggestions are totally out of control, and using terrible inline styles, that's a bug in mw's core.
 
 cdn bootstrap instead of local is a possibility, ill look further into that later.
 

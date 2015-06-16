@@ -24,8 +24,8 @@ $wgFooterIcons['poweredby']['funtoo'] = array(
 to have the funtoo logo be your brand add this to LocalSettings.php:
 $wgLogo = $wgScriptPath . "/skins/funtoo/resources/images/funtoosquare.png";
 
-another readme is to be found within the resources directory regarding development and further tweaking by hand.  to remove "brought to you by funtoo.org" delete lines 61 & 62 from funtoo.skin.php
-to remove the bottom bar funtoo infra links, remove lines 248-260
+another readme is to be found within the resources directory regarding development and further tweaking by hand.
+to remove the bottom bar funtoo infra links, remove lines 256-268
 
 
 my development environment to produce this skin was:
@@ -39,3 +39,8 @@ nginx was installed but not used to dev
 client side:
 firefox
 browser cache driven down to zero, local files purged, so elements show changes immediately, and firefox has good mobile development tiny sizes.  firebug plugin used to decypher css elements.
+
+
+background image is from forums.funtoo.org user j-g-
+
+languages need testing / reporting back / bugs filed against this skin on github.

@@ -50,16 +50,42 @@ class funtooTemplate extends BaseTemplate {
 	public function execute() {
 		$this->html( 'headelement' ); ?>
 <!--your fun stuff-->
-
+<div id="wrapper">
 <article>
+<div class="container-fluid">
+<!--start of search-->
+<form class="search col-xs-12 col-sm-4 col-md-4 media media-middle float-right" role="search" action="<?php $this->text( 'wgScript' ); ?>">
+  <div class="input-group">
+    <input type="hidden" name="title" class="" placeholder="Search" value="<?php $this->text( 'searchtitle' ) ?>"></input>
+<?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text', 'class' => 'form-control' ) ); ?>
+
+	<span class="input-group-btn">
+  <button type="submit" class="btn btn-default"><i class="fa fa-binoculars"></i></button>
+	</span>
+  </div>
+</form>
+<!--end of search-->
+
 <!--page title-->
 <?php if ( !empty( $this->data['title'] ) ) { ?>
-<h1 id="firstHeading" class="firstHeading"><?php $this->html( 'title' ) ?></h1>
+<h1 id="firstHeading" class="firstHeading col-xs-12 col-sm-8 col-md-8 float-left"><?php $this->html( 'title' ) ?></h1>
 <?php } ?>
 <!--end of page title-->
+</div>
 
-<!--brought to you by funtoo.org-->
-<h1 class="coffeetin center">brought to you by funtoo.org</h1>
+<!--subtitles-->
+<?php if ( $this->data['subtitle'] ) { ?>
+<div id="contentSub" class="container-fluid">
+<?php $this->html( 'subtitle' ); ?>
+</div>
+<?php } ?>
+<?php if ( $this->data['undelete'] ) { ?>
+<div id="contentSub" class="container-fluid">
+<?php $this->html( 'undelete' ); ?>
+</div>
+<?php } ?>
+<!--end of subtitles-->
+
 
 <!--user message new talk-->
 <?php if ( $this->data['newtalk'] ) { ?>
@@ -95,25 +121,9 @@ class funtooTemplate extends BaseTemplate {
 ?>
 <!--end of language links-->
 
-<!--subtitles-->
-<?php $this->html( 'subtitle' ); ?>
-<?php $this->html( 'undelete' ); ?>
-<?php if ( $this->data['subtitle'] ) { ?>
-<div id="contentSub"> <!-- The CSS class used in Monobook and Vector, if you want to follow a similar design -->
-<?php $this->html( 'subtitle' ); ?>
-</div>
-<?php } ?>
-<?php if ( $this->data['undelete'] ) { ?>
-<div id="contentSub2"> <!-- The CSS class used in Monobook and Vector, if you want to follow a similar design -->
-<?php $this->html( 'undelete' ); ?>
-</div>
-<?php } ?>
-<!--end of subtitles-->
-
 <!--start of nav-->
 <!--start of logo/minify menu button-->
-<div class="nav fixed container-fluid nopad">
-<nav class="navbar navbar-default shadow">
+<nav class="navbar navbar-default navbar-fixed-top shadow">
 <!--properly terminated tags to end of logo/min-->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -133,17 +143,17 @@ class funtooTemplate extends BaseTemplate {
 </div>
 <!--end of logo/minify menu button-->
 
- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+ <div class="collapse navbar-collapse container-fluid" id="bs-example-navbar-collapse-1">
 
 <ul class="nav">
 <!--start of sidebar-->
-<li class="horiz">
-<ul class="nav nav-pills navbar-nav">
-<li class="dropdown">
+ <li class="">
+  <ul class="nav nav-pills navbar-nav">
+   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
      <i class="fa fa-wrench"></i> Site Tools<span class="caret"></span>
     </a>
-<ul class="dropdown-menu" role="nav menu">
+     <ul class="dropdown-menu" role="nav menu">
 <?php
 foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 
@@ -159,52 +169,55 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 		echo $box['content'];
 	}
 } ?>
-</ul>
-</li>
-</ul>
-</li>
+     </ul>
+    </li>
+  </ul>
+ </li>
 <!--end of sidebar-->
 
 <!--start ofcontent actions-->
-<li class="horiz">
-<ul class="nav nav-pills navbar-nav">
-<li class="dropdown">
+ <li class="">
+  <ul class="nav nav-pills navbar-nav">
+   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-newspaper-o"></i> Page Tools<span class="caret"></span>
-    </a>
-<ul class="dropdown-menu" role="menu">
+     <i class="fa fa-newspaper-o"></i> Page Tools<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
 <?php
 	foreach ( $this->data['content_actions'] as $key => $tab ) {
 		echo $this->makeListItem( $key, $tab );
 	}
 ?>
-</ul>
-</li>
-</ul>
-</li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 <!--end of content actions-->
 
 <!--start of user tools-->
-<li class="horiz">
-<ul class="nav nav-pills navbar-nav">
-<li class="dropdown">
+ <li class="">
+  <ul class="nav nav-pills navbar-nav">
+   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-     <i class="fa fa-user"></i> User Tools<span class="caret"></span>
-    </a>
-<ul class="dropdown-menu" role="nav menu">
+     <i class="fa fa-user"></i> User Tools<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="nav menu">
 <?php
 	foreach ( $this->getPersonalTools() as $key => $item ) {
 		echo $this->makeListItem( $key, $item );
 	}
 ?>
-</ul>
-</li>
-</ul>
-</li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 <!--end of user tools-->
 
+</ul>
+</div>
+</nav>
+
+<footer>
 <!--start of search-->
-<form class="navbar-form navbar-right" role="search" action="<?php $this->text( 'wgScript' ); ?>">
+<form class="footbarsearch center" role="search" action="<?php $this->text( 'wgScript' ); ?>">
   <div class="input-group">
     <input type="hidden" name="title" class="" placeholder="Search" value="<?php $this->text( 'searchtitle' ) ?>"></input>
 <?php echo $this->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text', 'class' => 'form-control' ) ); ?>
@@ -216,11 +229,6 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 </form>
 <!--end of search-->
 
-</div>
-</nav>
-</div>
-
-<footer>
 <!--footer icons-->
 <?php
 	foreach ( $this->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) { ?>
@@ -246,7 +254,7 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 <!--end of your fun stuff-->
 
 <div class="footbar center shadow fixed">
-<ul>
+<ul class="nobullet">
 <li class="horiz">
 <a href="//www.funtoo.org/">wiki</a>
 </li>
@@ -258,9 +266,9 @@ foreach ( $this->getSidebar() as $boxName => $box ) { ?>
 </li>
 </ul>
 </div>
+</div><!--wrapper div term-->
 
 <?php $this->printTrail(); ?>
-</body>
-</html><?php
+<?php
 	}
 }

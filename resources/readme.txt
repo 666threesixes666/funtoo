@@ -6,7 +6,6 @@ directories are renamed to normalize, bootstrap, and font-awesome.
 
 styles and js can be added to the files funtoo.css funtoo.js & print.css for printer specific css.
 
-
 under the hood, this skin is 99% of this:
 https://www.mediawiki.org/wiki/Manual:Skinning
 
