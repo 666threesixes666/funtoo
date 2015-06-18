@@ -15,14 +15,16 @@ to activate the skin permenently, edit your wiki's LocalSettings.php:
 $wgDefaultSkin = "funtoo";
 
 to add powerd by funtoo, add this to LocalSettings.php:  (notice please only use this if you're running the operating system from funtoo.org)
+
 $wgFooterIcons['poweredby']['funtoo'] = array(
-	'src' => "$wgStylePath/funtoo/resources/images/funtoopowered.png",
-	'url' => '//www.funtoo.org/',
-	'alt' => 'Powered by funtoo',
+'src' => "$wgStylePath/funtoo/resources/images/funtoopowered.png",
+'url' => '//www.funtoo.org/',
+'alt' => 'Powered by funtoo',
 );
 
 to have the funtoo logo be your brand add this to LocalSettings.php:
-$wgLogo = $wgScriptPath . "/skins/funtoo/resources/images/funtoosquare.png";
+
+$wgLogo = "$wgStylePath/funtoo/resources/images/funtoosquare.png";
 
 another readme is to be found within the resources directory regarding development and further tweaking by hand.
 to remove the bottom bar funtoo infra links, remove lines 256-268
